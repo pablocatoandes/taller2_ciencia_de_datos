@@ -13,10 +13,9 @@ Prueba de concepto de un modelo que predice qué clientes de un banco van a aban
 
 ## Principales hallazgos
 
-- Contactar cada año al 23% de los clientes con mayor riesgo deja un beneficio neto estimado de COP 1.071 millones en el escenario base; ofrecer el beneficio a todos los clientes perdería COP 419 millones.
-- La inversión de COP 72 millones se recupera en menos de un mes en el escenario base y en unos 3,6 meses en el pesimista.
-- Se recomienda la red neuronal sin variables derivadas, con un umbral de contacto de 25%. Una retención vale casi cinco veces lo que cuesta una oferta mal dirigida, así que conviene detectar más clientes aunque aumenten las falsas alarmas.
-- El mayor riesgo del programa es el costo de la oferta: si los clientes retenidos se quedan solo dos años, la campaña pierde dinero con ofertas desde el 40% del ingreso anual. Mientras no se mida la permanencia real, la oferta no debería superar el 30%.
+- El beneficio de retener a un cliente se mide como su ingreso de un año. Con la oferta actual (21,5% del ingreso anual), el modelo contacta cada año a unos 826 clientes, casi 9 de cada 10 realmente se iban, y la campaña deja un beneficio neto de COP 28,8 millones; ofrecer el beneficio a todos los clientes perdería COP 2.384 millones.
+- Con ese beneficio la inversión de COP 72 millones tarda unos 30 meses en recuperarse. El problema es la oferta: un error cuesta más de lo que deja un acierto. Con una oferta del 10% del ingreso (COP 70.000), el beneficio sube a COP 145 millones al año.
+- Se recomienda la red neuronal sin variables derivadas, con un umbral de contacto de 70%. Como una falsa alarma cuesta dos veces y media lo que deja una retención, pesa más la precisión que el recall.
 - El número de productos, la edad y la actividad del cliente son las variables que más pesan en el riesgo. El género también aparece y no debe usarse para decidir a quién se ofrece un beneficio.
 
 ## Estructura del repositorio
@@ -32,7 +31,7 @@ Prueba de concepto de un modelo que predice qué clientes de un banco van a aban
 2. Entrenamiento de modelos: división estratificada 60/20/20, imputación con la mediana de entrenamiento, dos redes neuronales (configuración 1) y un árbol de decisión frente a un ensamble de regresión logística, árbol y KNN (configuración 2), con los hiperparámetros de estos tres elegidos por validación cruzada.
 3. Análisis cuantitativo: métricas en prueba con su lectura de negocio, intervalos de confianza por bootstrap, pruebas A/B independientes y pareadas, y McNemar.
 4. Análisis cualitativo y explicabilidad: curvas ICE, LIME y SHAP.
-5. Generación de valor y caso de negocio: valor esperado con la tasa de abandono del banco, umbral de decisión, resultado esperado, análisis de sensibilidad, limitaciones, conclusiones y un anexo con el caso de la práctica de clase.
+5. Generación de valor y caso de negocio: valor esperado con la tasa de abandono del banco y un año de ingreso por cliente retenido, umbral de decisión, resultado esperado, sensibilidad al costo de la oferta y al ingreso, limitaciones, conclusiones y un anexo con el caso de la práctica de clase.
 
 ## Ejecución
 
